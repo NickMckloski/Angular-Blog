@@ -1,0 +1,24 @@
+[
+    {
+        "ClientId": "clientAPI1",
+        "AllowedGrantTypes": [ "client_credentials" ],
+        "ClientSecrets": [
+            {
+                "Value": "Blog-secret",
+                "Description": "Blog secret"
+            }
+        ],
+        "AllowedScopes": [ "Blog" ]
+    },
+    {
+        "ClientId": "BlogClient",
+        "AllowedGrantTypes": [ "password" ],
+        "ClientSecrets": [
+            {
+                "Value": "Blog-secret",
+                "Description": "Blog secret"
+            }
+        ],
+        "AllowedScopes": [ "Blog" ]
+    }
+]
