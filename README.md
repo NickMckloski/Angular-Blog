@@ -1,2 +1,2 @@
 # Angular-Blog
-A custom blog made to refresh myself on Angular
+.NET Core Api with an Angular front end.
