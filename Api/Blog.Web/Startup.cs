@@ -1,4 +1,6 @@
 ﻿using Blog.Data;
+using Blog.Data.Repositories.Posts;
+using Blog.Services.Services.Posts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +26,9 @@ namespace Blog.Web
 
             services.AddDbContext<BlogContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("BlogDatabase")));
+
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IPostRepository, PostRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Services.Services.Posts;
+using Blog.Services.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Controllers
@@ -10,31 +12,41 @@ namespace Blog.Web.Controllers
     [ApiController]
     public class PostsController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly IPostService _postService;
+
+        public PostsController(IPostService postService)
         {
-            return new string[] { "value1", "value2" };
+            _postService = postService;
         }
-        
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+
+        [HttpGet]
+        public IEnumerable<PostViewModel> GetAll()
         {
-            return "value";
+            return _postService.GetAll();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<PostViewModel> GetByIdAsync(Guid id)
+        {
+            return await _postService.GetByIdAsync(id);
         }
         
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<Guid> CreateAsync([FromBody] PostViewModel postViewModel)
         {
+            return await _postService.CreateAsync(postViewModel);
         }
         
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Update([FromBody] PostViewModel postViewModel)
         {
+            _postService.UpdateAsync(postViewModel);
         }
         
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            _postService.DeleteAsync(id);
         }
     }
 }
