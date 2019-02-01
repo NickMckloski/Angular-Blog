@@ -2,18 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Blog.Domain.Models
+namespace Blog.Services.ViewModels
 {
-    public class Post : Entity
+    public class PostViewModel : EntityViewModel
     {
-
-        public Post(string title, string content)
-        {
-            Title = title;
-            Content = content;
-            CreationDate = DateTime.UtcNow;
-        }
-
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CreationDate { get; set; }
