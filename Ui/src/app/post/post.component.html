@@ -1,0 +1,19 @@
+<p>
+  Post {{id}}
+</p>
+
+<div *ngIf="id == 'new'">
+
+  <h2>New Post:</h2>
+  <div>
+    <label>Title:
+      <input [(ngModel)]="post.title" placeholder="Title"/>
+    </label>
+  </div>
+  <div>
+    <label>Content:
+      <input [(ngModel)]="post.content" placeholder="Title"/>
+    </label>
+  </div>
+
+</div>
